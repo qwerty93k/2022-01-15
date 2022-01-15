@@ -16,6 +16,12 @@
             <input type="text" name="client_surname" placeholder="Client surname">
             <input type="text" name="client_username" placeholder="Client username">
             <input type="bigInteger" name="company_id" placeholder="Company id">
+            <!-- <select name="company_id">
+                <?php
+                for($x=1; $x<251; $x++) : ?>
+                    <option value="<?php echo $x; ?>"><?php echo $x; ?></option>
+                <?php endfor;?>
+            </select>  -->
             <input type="text" name="image_url" placeholder="Image_url">
             @csrf
             <button type="submit" class="btn btn-primary">Add</button>
