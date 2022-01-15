@@ -42,3 +42,28 @@ Route::prefix('clients')->group(function () {
     //Show form, /{client}=id
     Route::get('show/{client}', 'App\Http\Controllers\ClientController@show')->name('client.show');
 });
+
+// Company route
+
+Route::prefix('companies')->group(function () {
+    //Index
+    Route::get('', 'App\Http\Controllers\CompanyController@index')->name('company.index');
+
+    //Create
+    Route::get('create', 'App\Http\Controllers\CompanyController@create')->name('company.create');
+
+    //Store
+    Route::post('store', 'App\Http\Controllers\CompanyController@store')->name('company.store');
+
+    //Edit form
+    Route::get('edit/{company}', 'App\Http\Controllers\CompanyController@edit')->name('company.edit');
+
+    //Update
+    Route::post('update/{company}', 'App\Http\Controllers\CompanyController@update')->name('company.update');
+
+    //Delete
+    Route::post('destroy/{company}', 'App\Http\Controllers\CompanyController@destroy')->name('company.destroy');
+
+    //Show
+    Route::get('show/{company}', 'App\Http\Controllers\CompanyController@show')->name('company.show');
+});
