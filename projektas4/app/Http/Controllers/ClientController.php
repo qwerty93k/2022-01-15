@@ -29,6 +29,10 @@ class ClientController extends Controller
      */
     public function create()
     {
+
+        //pagal laravel dokumentacija clients db uzpildyti 30 randomu klientu
+
+
         //vienas sprendimo budu
         // $select_values = [];
         // for ($x = 1; $x < 251; $x++) {
