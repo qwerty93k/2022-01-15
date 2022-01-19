@@ -10,12 +10,21 @@
 <body>
 <div class="container">
     <h1>Client edit</h1>
-    <form method="POST" action="{{route('client.update', [$client])}}">
-        <input type="text" name="client_name" value={{$client->name}} placeholder="Client name">
-        <input type="text" name="client_surname" value={{$client->surname}} placeholder="Client surname">
-        <input type="text" name="client_username" value={{$client->username}} placeholder="Client username">
-        <input type="bigInteger" name="company_id" value={{$client->company_id}} placeholder="Company id">
-        <input type="text" name="image_url" value={{$client->image_url}} placeholder="Image_url">
+    <form method="POST"  class="form-control" action="{{route('client.update', [$client])}}">
+        <input type="text" class="form-control" name="client_name" value={{$client->name}} placeholder="Client name">
+        <input type="text" class="form-control" name="client_surname" value={{$client->surname}} placeholder="Client surname">
+        <input type="text" class="form-control" name="client_username" value={{$client->username}} placeholder="Client username">
+        <!-- <input type="bigInteger" class="form-control" name="company_id" value={{$client->company_id}} placeholder="Company id"> -->
+        <select name="company_id" class="form-control">
+            @foreach ($select_values as $company)
+                @if ($company->id == $client->company_id)
+                    <option value="{{$company->id}}" selected>{{$company->name}}</option>
+                @else
+                    <option value="{{$company->id}}">{{$company->name}}</option>
+                @endif
+            @endforeach
+        </select>
+        <input type="text" class="form-control" name="image_url" value={{$client->image_url}} placeholder="Image_url">
         @csrf
         <button type="submit" class="btn btn-primary">Save</button>
     </form>

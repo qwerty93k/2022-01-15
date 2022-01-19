@@ -11,18 +11,21 @@
 <body>
     <div class="container">
         <h1>Client Create</h1>
-        <form method="POST" action="{{route('client.store')}}">
-            <input type="text" name="client_name" placeholder="Client name">
-            <input type="text" name="client_surname" placeholder="Client surname">
-            <input type="text" name="client_username" placeholder="Client username">
-            <input type="bigInteger" name="company_id" placeholder="Company id">
-            <!-- <select name="company_id">
-                <?php
-                for($x=1; $x<251; $x++) : ?>
+        <form method="POST" class="form-control" action="{{route('client.store')}}">
+            <input type="text" class="form-control" name="client_name" placeholder="Client name">
+            <input type="text" class="form-control" name="client_surname" placeholder="Client surname">
+            <input type="text" class="form-control" name="client_username" placeholder="Client username">
+            <!--  <input type="bigInteger" name="company_id" placeholder="Company id">  -->
+            <select name="company_id" class="form-control">
+                {{--<?php for($x=1; $x<251; $x++) : ?>
                     <option value="<?php echo $x; ?>"><?php echo $x; ?></option>
-                <?php endfor;?>
-            </select>  -->
-            <input type="text" name="image_url" placeholder="Image_url">
+                <?php endfor;?> buvau pasirases toki, bet blade sintakse variantas butu teisingesnis, naudojant controleri--}}
+                @foreach ($select_values as $company)
+                    <option value="{{$company->id}}">{{$company->name}}</option>
+                @endforeach
+
+            </select>
+            <input type="text" class="form-control" name="image_url" placeholder="Image_url">
             @csrf
             <button type="submit" class="btn btn-primary">Add</button>
             <a class="btn btn-secondary" href="{{route('client.index')}}">Clients</a>

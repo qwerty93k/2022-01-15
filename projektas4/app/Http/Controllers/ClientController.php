@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Company; // imame informacija ir is kompaniju modeliu
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 
@@ -28,7 +29,18 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('clients.create');
+        //vienas sprendimo budu
+        // $select_values = [];
+        // for ($x = 1; $x < 251; $x++) {
+        //     $select_values[] = $x;
+        // }
+
+        $select_values = Company::all();
+
+        //0: {id: 1; name: company1, type; "MB", desc: 'aprasymas'}
+        //1: {id: 2; name: company2, type; "MB", desc: 'aprasymas'}
+
+        return view('clients.create', ['select_values' => $select_values]);
     }
 
     /**
@@ -70,7 +82,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('clients.edit', ['client' => $client]); // atsako uz duomenu atvaisdavima
+        $select_values = Company::all();
+        return view('clients.edit', ['client' => $client, 'select_values' => $select_values]); // atsako uz duomenu atvaisdavima
 
     }
 
