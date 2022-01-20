@@ -24,6 +24,7 @@
             <th>Company name</th>
             <th>Type</th>
             <th>Description</th>
+            <th>Action</th>
         </tr>
         @foreach ($companies as $company)
             <tr>
