@@ -34,7 +34,8 @@
                 <td>{{$client->name}}</td>
                 <td>{{$client->surname}}</td>
                 <td>{{$client->username}}</td>
-                <td>{{$client->company_id}}</td>
+                {{--<td>{{$client->company_id}}</td>--}}
+                <td>{{$client->clientCompany->name}}</td> {{-- imame konkretu klienta, kreipiames i metoda ir atvaizduojame jo varda--}}
                 <td><a href="{{$client->image_url}}" target="_blank"><img src="{{$client->image_url}}" alt="Client Profile Picture" width="50" height="50"></a></td>
                 <td>
                     <a class="btn btn-primary" href="{{route('client.edit', [$client])}}">Edit</a>

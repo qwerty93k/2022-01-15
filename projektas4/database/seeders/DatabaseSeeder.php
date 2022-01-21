@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
         //kad nedubliuoti koda, rasome taip
 
         $this->call([
-            ClientSeeder::class,
-            CompanySeeder::class
+            CompanySeeder::class,
+            ClientSeeder::class
         ]);
     }
 }

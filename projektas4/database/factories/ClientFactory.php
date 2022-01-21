@@ -27,7 +27,7 @@ class ClientFactory extends Factory
             'surname' => $this->faker->lastName(),
             'username' => $this->faker->userName(),
             //'company_id' => rand(1, 250),
-            'company_id' => $this->faker->numberBetween(1, 250),
+            'company_id' => $this->faker->numberBetween(1, 10),
             'image_url' => $this->faker->imageUrl(),
         ];
     }
