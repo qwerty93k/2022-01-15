@@ -18,7 +18,10 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('username');
-            $table->bigInteger('company_id');
+            $table->unsignedbigInteger('company_id'); // unsidgned 1 teigiami skaiciai
+            $table->foreign('company_id')->references('id')->on('companies'); //rysys tarp lenteleiu, company id is klientu susijes su id is kompaniju
+            //pirma lentele poto rysiai
+
             $table->string('image_url');
             $table->timestamps();
         });
