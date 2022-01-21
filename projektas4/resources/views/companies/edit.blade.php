@@ -11,9 +11,18 @@
 <div class="container">
     <h1>Company edit</h1>
     <form method="POST" action="{{route('company.update', [$company])}}">
-        <input type="text" name="company_name" value={{$company->name}} placeholder="Company name">
-        <input type="text" name="company_type" value={{$company->type}} placeholder="Company type">
-        <input type="text" name="company_description" value={{$company->description}} placeholder="Company description">
+        <input type="text" class="form-control" name="company_name" value={{$company->name}} placeholder="Company name">
+        {{-- <input type="text" class="form-control" name="company_type" value={{$company->type}} placeholder="Company type"> --}}
+        <select name='company_type' class="form-select">
+            @foreach ($types as $type)
+                @if($type->id==$company->type_id)
+                    <option value="{{$type->id}}" selected>{{$type->short_name}}, {{$type->name}}</option>
+                @else
+                    <option value="{{$type->id}}">{{$type->short_name}}, {{$type->name}}</option>
+                @endif
+            @endforeach
+        </select>
+        <input type="text" class="form-control" name="company_description" value={{$company->description}} placeholder="Company description">
         @csrf
         <button type="submit" class="btn btn-primary">Save</button>
     </form>

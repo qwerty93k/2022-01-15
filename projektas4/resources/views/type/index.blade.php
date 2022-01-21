@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Companies</title>
+    <title>Types</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 </head>
 <body>
 <div class="container">
-    <h1>Companies list</h1>
+    <h1>Types index</h1>
 
     @if(session()->has('error_message'))
         <div class="alert alert-danger">
@@ -24,32 +24,32 @@
     </div>
     @endif
 
-    @if (count($companies)==0)
-        <p>There is no Companies</p>
+    @if (count($types)==0)
+        <p>There is no types</p>
     @endif
     
-    <a class="btn btn-primary" href="{{route('company.create')}}">Create Company</a>
+    <a class="btn btn-primary" href="{{route('type.create')}}">Create new type</a>
 
     <table class="table table-striped">
         <tr>
             <th>Id</th>
-            <th>Company name</th>
-            <th>Type</th>
+            <th>Name</th>
+            <th>Short name</th>
             <th>Description</th>
-            <th>Total Clients</th>
-            <th>Action</th>
+            <th>Total Companies</th>
+            <th>Actions</th>
         </tr>
-        @foreach ($companies as $company)
+        @foreach ($types as $type)
             <tr>
-                <td>{{$company->id}}</td>
-                <td>{{$company->name}}</td>
-                <td>{{$company->companyType->short_name}}</td>
-                <td>{{$company->description}}</td>
-                <td>{{count($company->companyClients)}}</td>
+                <td>{{$type->id}}</td>
+                <td>{{$type->name}}</td>
+                <td>{{$type->short_name}}</td>
+                <td>{{$type->description}}</td>
+                <td>{{count($type->typeCompanies)}}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{route('company.edit', [$company])}}">Edit</a>
-                    <a class="btn btn-secondary" href="{{route('company.show', [$company])}}">Show</a>
-                    <form method="post" action="{{route('company.destroy', [$company])}}">
+                    <a class="btn btn-primary" href="{{route('type.edit', [$type])}}">Edit</a>
+                    <a class="btn btn-secondary" href="{{route('type.show', [$type])}}">Show</a>
+                    <form method="post" action="{{route('type.destroy', [$type])}}">
                         @csrf
                         <button class="btn btn-danger" type="submit">Delete</button>
                     </form>
