@@ -13,7 +13,7 @@
     <p>ID: {{$company->id}}</p>
     <p>Name: {{$company->name}}</p>
     <p>Type: {{$company->companyType->name}}</p>
-    <p>Description: {{$company->description}}</p>
+    <p>Description: {!!$company->description!!}</p>
 
 @if(count($company->companyClients) ==0)
     <p>There is no Clients</p>
